@@ -1,13 +1,11 @@
-// pages/video/video.js
-
-import videoAPI from '../../service/videoAPI'
+// pages/myself/myself.js
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-        data:{}
+
     },
 
     /**
@@ -28,9 +26,6 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        videoAPI(10).then(res=>{
-            this.setData({data:res.data})
-        })
 
     },
 
