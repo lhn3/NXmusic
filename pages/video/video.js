@@ -28,8 +28,11 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-        videoAPI(10).then(res=>{
-            this.setData({data:res.data})
+        videoAPI(0).then(res=>{
+            if(res.code==200){
+                this.setData({data:res.data})
+            }
+            console.log(this.data.data)
         })
 
     },

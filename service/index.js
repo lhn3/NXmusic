@@ -1,6 +1,6 @@
 let BASE_URL='http://123.207.32.32:9001'
 // 封装请求
-class MYrequest{
+class MyRequest{
     request(url,method,data){
         return new Promise((resolve,reject)=>{
             wx.request({
@@ -8,11 +8,9 @@ class MYrequest{
                 method:method,
                 data:data,
                 success:(res)=>{
-                    resolve(res)
+                    resolve(res.data)
                 },
-                fail:(err)=>{
-                    reject(err)
-                }
+                fail:reject
               })
         })
     }
@@ -26,5 +24,5 @@ class MYrequest{
     }
 }
 
-let NXrequest=new MYrequest()
-export default NXrequest
+let NxRequest=new MyRequest()
+export default NxRequest
