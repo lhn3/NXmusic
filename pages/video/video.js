@@ -43,6 +43,16 @@ Page({
         this.getVideoInfo(this.data.mv.length)
     },
 
+    //前往详情页
+    toVideoDetail(e){
+        // info为data-info信息
+        let id = e.currentTarget.dataset.info.id
+        // 页面跳转
+        wx.navigateTo({
+          url: '/pages/detail-video/detail-video?id='+id,
+        })
+    },
+
     //生命周期函数--监听页面初次渲染完成
     onReady() {
 

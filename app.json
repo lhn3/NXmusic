@@ -3,7 +3,8 @@
         "pages/home/home",
         "pages/video/video",
         "pages/myself/myself",
-        "components/video-item/index"
+        "components/video-item/index",
+        "pages/detail-video/detail-video"
     ],
     "window": {
         "backgroundTextStyle": "light",
