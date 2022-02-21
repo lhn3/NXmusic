@@ -2,7 +2,8 @@
     "pages": [
         "pages/home/home",
         "pages/video/video",
-        "pages/myself/myself"
+        "pages/myself/myself",
+        "components/video-item/index"
     ],
     "window": {
         "backgroundTextStyle": "light",

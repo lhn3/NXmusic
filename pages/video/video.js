@@ -32,7 +32,6 @@ Page({
             if(res.code==200){
                 this.setData({data:res.data})
             }
-            console.log(this.data.data)
         })
 
     },
