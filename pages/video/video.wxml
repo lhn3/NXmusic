@@ -1,6 +1,6 @@
 <!--pages/video/video.wxml-->
 <view class="video">
-    <view class="video-item" wx:for="{{data}}" wx:key="id">
+    <view class="video-item" wx:for="{{mv}}" wx:key="id">
         <video-item item="{{item}}"></video-item>
     </view>
 </view>
