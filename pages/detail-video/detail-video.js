@@ -24,40 +24,11 @@ Page({
         })
         
     },
-
+    
     onLoad(options) {
         //获取id
         this.setData({id:options.id})
         //发送请求
         this.getVideoInfo()
     },
-
-    onReady() {
-
-    },
-
-
-    onShow() {
-
-    },
-
-    onHide() {
-
-    },
-
-    onUnload() {
-
-    },
-
-    onPullDownRefresh() {
-
-    },
-
-    onReachBottom() {
-
-    },
-
-    onShareAppMessage() {
-
-    }
 })

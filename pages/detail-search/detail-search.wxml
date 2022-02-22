@@ -1,0 +1,7 @@
+<!--pages/detail-search/detail-search.wxml-->
+<vant-search 
+background="#fafafa" 
+shape="round" 
+placeholder="搜索你喜欢的歌曲" 
+autofocus
+/>

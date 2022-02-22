@@ -1,2 +1,8 @@
 <!--pages/home/home.wxml-->
-<text>音乐</text>
+<!-- 搜索框 -->
+<vant-search 
+background="#fafafa" 
+shape="round" 
+placeholder="搜索你喜欢的歌曲" 
+disabled 
+bind:click-input="handleSearch"/>

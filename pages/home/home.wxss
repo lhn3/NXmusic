@@ -1,1 +1,4 @@
 /* pages/home/home.wxss */
+.van-search__content{
+    background-color:#fff !important;
+}

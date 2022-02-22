@@ -20,7 +20,7 @@
 .item-title{
     font-size: 28rpx;
     font-weight: bold;
-    margin-bottom: 10rpx;
+    margin: 10rpx 0;
 }
 .item-name{
     font-size: 24rpx;

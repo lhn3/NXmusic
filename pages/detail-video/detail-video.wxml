@@ -1,6 +1,7 @@
 <!--pages/detail-video/detail-video.wxml-->
 <wxs src="../../utils/format.wxs" module="format"></wxs>
 
+<!-- 视频 -->
 <video class="mv" loop src="{{videoPlay.url}}"></video>
 <!-- 信息 -->
 <view class="detail"> 

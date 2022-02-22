@@ -2,6 +2,7 @@
 page{
     /* 给整个页面添加外边距 */
     padding-top: 225px;
+    background-color: #ffffff;
 }
 .mv{
     width: 100%;
@@ -29,7 +30,7 @@ page{
 }
 .detail-info-count{
     margin-right: 20rpx;
-}
+} 
 .relate{
     margin: 20rpx;
 }

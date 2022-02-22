@@ -14,8 +14,8 @@
             "list": [
                 {
                     "name": "",
-                    "pathName": "pages/detail-video/detail-video",
-                    "query": "id=14480854",
+                    "pathName": "pages/home/home",
+                    "query": "",
                     "scene": null,
                     "launchMode": "default"
                 }
