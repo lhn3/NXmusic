@@ -1,8 +1,15 @@
 <!--pages/home/home.wxml-->
 <!-- 搜索框 -->
-<vant-search 
-background="#fafafa" 
-shape="round" 
-placeholder="搜索你喜欢的歌曲" 
+<vant-search background="#fafafa" shape="round" placeholder="搜索你喜欢的歌曲" 
 disabled 
 bind:click-input="handleSearch"/>
+
+<!-- 轮播图 -->
+<swiper autoplay interval="{{3000}}" indicator-dots circular class="swiper" 
+style="height: {{swiperHeight}};">
+    <block  wx:for="{{banners}}" wx:key="bannerId">
+        <swiper-item class="swiper-item">
+            <image class="swiperImg" src="{{item.pic}}" mode="widthFix" bindload="getImgInfo"></image>
+        </swiper-item> 
+    </block>
+</swiper>

@@ -2,3 +2,10 @@
 .van-search__content{
     background-color:#fff !important;
 }
+/* 轮播图样式 */
+.swiper{
+    width: 100%; 
+}
+.swiperImg{
+    width: 100%;
+}
