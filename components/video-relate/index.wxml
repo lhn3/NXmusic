@@ -1,0 +1,13 @@
+<!--components/video-relate/index.wxml-->
+<wxs src="../../utils/format.wxs" module="format"></wxs>
+
+<view class="item">
+    <view class="item-img">
+        <image class="item-image" src="{{item.coverUrl}}"></image>
+        <view class="itemImgNum">{{format.formatCount(item.durationms)}}</view>
+    </view>
+    <view class="item-info">
+        <view class="item-title">{{item.title}}</view>
+        <view class="item-name">{{item.creator[0].userName}}</view>
+    </view>
+</view>

@@ -4,7 +4,8 @@
         "pages/video/video",
         "pages/myself/myself",
         "components/video-item/index",
-        "pages/detail-video/detail-video"
+        "pages/detail-video/detail-video",
+        "components/video-relate/index"
     ],
     "window": {
         "backgroundTextStyle": "light",

@@ -1,6 +1,6 @@
 // pages/video/video.js
 
-import videoAPI from '../../service/videoAPI'
+import {getVideoList} from '../../service/videoAPI'
 Page({
     //页面的初始数据
     data: {
@@ -9,10 +9,10 @@ Page({
     },
 
     //封装方法，类似于methods
-    async getVideoInfo(offset){
+    async getVideos(offset){
         // 请求加载动画
         wx.showNavigationBarLoading()
-        let res=await videoAPI(offset)
+        let res=await getVideoList(offset)
         if(res.code==200){
             if(offset==0){
                 this.setData({mv:res.data})
@@ -28,19 +28,19 @@ Page({
 
     //生命周期函数--监听页面加载
     onLoad(options) {
-       this.getVideoInfo(0)
+       this.getVideos(0)
     },
 
     //下拉刷新
     onPullDownRefresh() {
         // 重新请求数据
-        this.getVideoInfo(0)
+        this.getVideos(0)
     },
 
     //页面上拉触底事件的处理函数
     onReachBottom: async function () {
         if(!this.data.hasMore) return;
-        this.getVideoInfo(this.data.mv.length)
+        this.getVideos(this.data.mv.length)
     },
 
     //前往详情页

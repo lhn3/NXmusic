@@ -1,67 +1,63 @@
 // pages/detail-video/detail-video.js
+import {getVideoPlay,getVideoDetail,getRelateVideo} from '../../service/videoAPI'
 Page({
-
-    /**
-     * 页面的初始数据
-     */
     data: {
-
+        id:null,
+        videoPlay:{},
+        videoDetail:{},
+        relateVideo:[]
     },
 
-    /**
-     * 生命周期函数--监听页面加载
-     */
+    //网络请求
+    getVideoInfo(){
+        //视频播放地址请求
+        getVideoPlay(this.data.id).then(res=>{
+            this.setData({videoPlay:res.data,})
+        })
+        //播放的视频详细信息
+        getVideoDetail(this.data.id).then(res=>{
+            this.setData({videoDetail:res.data,})
+        })
+        //播放视频的推荐视频
+        getRelateVideo(this.data.id).then(res=>{
+            this.setData({relateVideo:res.data,})
+        })
+        
+    },
+
     onLoad(options) {
         //获取id
-        console.log(options.id)
+        this.setData({id:options.id})
+        //发送请求
+        this.getVideoInfo()
     },
 
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
+    onReady() {
 
     },
 
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
+
+    onShow() {
 
     },
 
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
+    onHide() {
 
     },
 
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
+    onUnload() {
 
     },
 
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
+    onPullDownRefresh() {
 
     },
 
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
+    onReachBottom() {
+
+    },
+
+    onShareAppMessage() {
 
     }
 })

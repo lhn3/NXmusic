@@ -1,3 +1,5 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "video-relate":"/components/video-relate/index"
+  }
 }

@@ -1,1 +1,40 @@
 /* pages/detail-video/detail-video.wxss */
+page{
+    /* 给整个页面添加外边距 */
+    padding-top: 225px;
+}
+.mv{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    z-index: 2;
+}
+.detail{
+    margin: 20rpx;
+}
+.detail-title, .relate-title{
+    font-size: 34rpx;
+    font-weight: bold;
+    margin-bottom: 10rpx;
+}
+.detail-name{
+    font-size: 28rpx;
+    color: #8a8a8a;
+    margin-bottom: 10rpx;
+}
+.detail-info{
+    font-size: 28rpx;
+    color: #8a8a8a;
+    margin-bottom: 50rpx;
+}
+.detail-info-count{
+    margin-right: 20rpx;
+}
+.relate{
+    margin: 20rpx;
+}
+.relate-title{
+    margin-bottom: 10rpx;
+}
+
+  
