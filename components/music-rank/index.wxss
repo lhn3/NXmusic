@@ -1,0 +1,30 @@
+/* components/music-rank/index.wxss */
+
+.rankItem{
+    display: flex;
+    justify-content: left;
+    margin-bottom: 40rpx;
+}
+.rankImg{
+    width: 120rpx;
+    height: 120rpx;
+    margin-right: 20rpx ;
+    border-radius: 20rpx;
+}
+.rankInfo{
+    flex:1;
+}
+.rankTitle{
+    font-size: 30rpx;
+    line-height: 60rpx;
+}
+.rankName{
+    font-size: 24rpx;
+    line-height: 40rpx;
+    color: #8a8a8a;
+}
+.rankMore{
+    width: 50rpx; 
+    height: 50rpx;
+    margin-top: 35rpx;
+}

@@ -7,7 +7,8 @@
         "pages/detail-video/detail-video",
         "components/video-relate/index",
         "pages/detail-search/detail-search",
-        "components/header/index"
+        "components/header/index",
+        "components/music-rank/index"
     ],
     "window": {
         "backgroundTextStyle": "light",

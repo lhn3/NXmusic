@@ -3,7 +3,7 @@
 <vant-search background="#fafafa" shape="round" placeholder="搜索你喜欢的歌曲" 
 disabled 
 bind:click-input="handleSearch"/>
-
+ 
 <!-- 轮播图 -->
 <swiper autoplay interval="{{3000}}" indicator-dots circular class="swiper" 
 style="height: {{swiperHeight}};">
@@ -17,4 +17,10 @@ style="height: {{swiperHeight}};">
 <!-- 推荐 -->
 <view class="recommend">
     <header title='推荐歌曲'></header>  
+    <view class="song-list">
+        <block wx:for="{{ranking}}" wx:key="id">
+        <!-- 推荐歌曲组件 -->
+           <music-rank item="{{item}}"></music-rank>  
+        </block>
+    </view>    
 </view>
