@@ -13,3 +13,8 @@ style="height: {{swiperHeight}};">
         </swiper-item> 
     </block> 
 </swiper>
+
+<!-- 推荐 -->
+<view class="recommend">
+    <header title='推荐歌曲'></header>  
+</view>

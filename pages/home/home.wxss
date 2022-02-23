@@ -1,13 +1,24 @@
 /* pages/home/home.wxss */
+page{
+    padding: 0 20rpx; 
+    background-color: rgb(145, 161, 161);
+}
 .van-search__content{
-    background-color:#fff !important;
+    background-color:#fff !important; 
+}
+.van-search{
+    padding: 20rpx 0 !important;
 }
 /* 轮播图样式 */
 .swiper{
     width: 100%; 
+    border-radius: 20rpx; 
+    overflow: hidden;
+    transform: translateY(0)
 }
-.swiper-item{
+.swiper-item{ 
     width: 100%;
+    display: flex;
 }
 .swiperImg{
     width: 100%;

@@ -6,7 +6,8 @@
         "components/video-item/index",
         "pages/detail-video/detail-video",
         "components/video-relate/index",
-        "pages/detail-search/detail-search"
+        "pages/detail-search/detail-search",
+        "components/header/index"
     ],
     "window": {
         "backgroundTextStyle": "light",

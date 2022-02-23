@@ -2,7 +2,7 @@
 <wxs src="../../utils/format.wxs" module="format"></wxs>
 
 <!-- 视频 -->
-<video class="mv" loop src="{{videoPlay.url}}"></video>
+<video class="mv" autoplay loop referrer-policy="origin" src="{{videoPlay.url}}"></video>
 <!-- 信息 -->
 <view class="detail"> 
     <view class="detail-title">{{videoDetail.name}}</view>
@@ -17,6 +17,7 @@
     <view class="relate-title">推荐视频</view>
     <view> 
         <block  wx:for="{{relateVideo}}" wx:key="vid">
+        <!-- 推荐组件 -->
             <video-relate item="{{item}}"></video-relate>
         </block>
     </view>

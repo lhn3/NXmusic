@@ -1,6 +1,7 @@
 <!--pages/video/video.wxml-->
 <view class="video">
     <view class="video-item" wx:for="{{mv}}" wx:key="id">
+    <!-- video列表组件 -->
         <video-item item="{{item}}" bind:tap="toVideoDetail" data-info="{{item}}"></video-item>
     </view>
 </view>

@@ -4,7 +4,7 @@ Component({
     properties:{
         item:{
             type:Object,
-            default:{}
+            value:{}
         }
     },
     data:{
