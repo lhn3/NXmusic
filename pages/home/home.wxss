@@ -6,6 +6,9 @@
 .swiper{
     width: 100%; 
 }
+.swiper-item{
+    width: 100%;
+}
 .swiperImg{
     width: 100%;
 }

@@ -8,8 +8,8 @@ bind:click-input="handleSearch"/>
 <swiper autoplay interval="{{3000}}" indicator-dots circular class="swiper" 
 style="height: {{swiperHeight}};">
     <block  wx:for="{{banners}}" wx:key="bannerId">
-        <swiper-item class="swiper-item">
+        <swiper-item class="swiper-item"> 
             <image class="swiperImg" src="{{item.pic}}" mode="widthFix" bindload="getImgInfo"></image>
         </swiper-item> 
-    </block>
+    </block> 
 </swiper>
