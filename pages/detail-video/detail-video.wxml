@@ -18,7 +18,7 @@
     <view> 
         <block  wx:for="{{relateVideo}}" wx:key="vid">
         <!-- 推荐组件 -->
-            <video-relate item="{{item}}"></video-relate>
+            <video-relate item="{{item}}" bind:tap="toVideoDetail" data-info="{{item}}"></video-relate>
         </block>
     </view>
 </view>

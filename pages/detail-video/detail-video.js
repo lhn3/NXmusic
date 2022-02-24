@@ -31,4 +31,12 @@ Page({
         //发送请求
         this.getVideoInfo()
     },
+
+    //点击推荐视频进入详情
+    toVideoDetail(e){
+        let id=e.currentTarget.dataset.info.vid
+        // wx.navigateTo({
+        //   url: `/pages/detail-video/detail-video?id=${id}`,
+        // })
+    }
 })

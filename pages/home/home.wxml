@@ -18,7 +18,7 @@ style="height: {{swiperHeight}};">
 <view class="recommend">
     <header title='推荐歌曲'></header>  
     <view class="song-list">
-        <block wx:for="{{ranking}}" wx:key="id">
+        <block wx:for="{{hotRanking}}" wx:key="id">
            <music-rank item="{{item}}"></music-rank>  
         </block>
     </view>    
