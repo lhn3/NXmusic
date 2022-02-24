@@ -1,0 +1,39 @@
+/* components/music-menu-item/index.wxss */
+.item{
+    position: relative;
+    width: 200rpx;
+    height: 280rpx;
+}
+.img{
+    width: 100%;
+    border-radius: 20rpx;
+}
+.count{
+    position: absolute;
+    right: 10rpx;
+    bottom: 90rpx;
+    font-size: 20rpx;
+    color: #fff;
+    height: 40rpx;
+    width: 100rpx;
+    border-radius: 20rpx;
+    text-align: center;
+    line-height: 40rpx;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+.info{ 
+    font-size: 26rpx;
+    overflow:hidden;
+    /* 显示两行 */
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    display: -moz-box;
+    -moz-line-clamp:2;
+    -moz-box-orient: vertical;
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: normal;
+    overflow: hidden;
+}

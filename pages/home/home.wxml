@@ -19,8 +19,13 @@ style="height: {{swiperHeight}};">
     <header title='推荐歌曲'></header>  
     <view class="song-list">
         <block wx:for="{{ranking}}" wx:key="id">
-        <!-- 推荐歌曲组件 -->
            <music-rank item="{{item}}"></music-rank>  
         </block>
     </view>    
 </view>
+
+<!-- 热门 -->
+<music-menu title="热门歌单" songList="{{hotMusicMenu}}"></music-menu>
+
+<!-- 华语 -->
+<music-menu title="华语乐坛" songList="{{chinaMusicMenu}}"></music-menu>

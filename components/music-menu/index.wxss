@@ -1,0 +1,16 @@
+/* components/music-menu/index.wxss */
+.scroll{
+    white-space: nowrap;
+    width: 100vw;
+    position:relative;
+    left: -20rpx;
+}
+.scrollItem{
+    display: inline-block;
+    margin-left: 20rpx; 
+    vertical-align: top;
+}
+/* 最后一个加一个右外边距 */
+.scrollItem:last-of-type{
+    margin-right: 20rpx;
+}

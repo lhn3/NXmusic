@@ -2,10 +2,15 @@ import NxRequest from './index'
 
 // 请求轮播图数据
 export function getBanner(){
-    return NxRequest.get('/banner',{type:2})
+    return NxRequest.get(`/banner?type=${2}`)
 }
 
 // 请求推荐/飙升/热门歌曲数据
 export function getRanking(idx){
-    return NxRequest.get('/top/list',{idx:idx})
+    return NxRequest.get(`/top/list?idx=${idx}`)
+}
+
+// 请求歌单
+export function getMusicMenu(cat,limit=6,offset=0){
+    return NxRequest.get(`/top/playlist?cat=${cat}&limit=${limit}&offset=${offset}`)
 }

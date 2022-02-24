@@ -1,6 +1,6 @@
-import {rankingStore} from './rankingStore'
+import {songStore} from './songStore'
 
 export {
-    rankingStore
+    songStore
 }
 

@@ -8,7 +8,9 @@
         "components/video-relate/index",
         "pages/detail-search/detail-search",
         "components/header/index",
-        "components/music-rank/index"
+        "components/music-rank/index",
+        "components/music-menu/index",
+        "components/music-menu-item/index"
     ],
     "window": {
         "backgroundTextStyle": "light",
