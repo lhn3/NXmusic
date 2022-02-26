@@ -26,7 +26,7 @@ export const songStore=new HYEventStore({
             let res=await getMusicMenu('全部')
             ctx.hotMusicMenu=res.playlists
         },
-        // 获取热门歌曲 
+        // 获取华语歌曲 
         async chinaMusicMenuAction(ctx){
             let res=await getMusicMenu('华语')
             ctx.chinaMusicMenu=res.playlists

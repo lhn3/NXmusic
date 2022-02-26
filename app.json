@@ -10,7 +10,9 @@
         "components/header/index",
         "components/music-rank/index",
         "components/music-menu/index",
-        "components/music-menu-item/index"
+        "components/music-menu-item/index",
+        "components/music-peakedness/index",
+        "components/music-peakedness-item/index"
     ],
     "window": {
         "backgroundTextStyle": "light",

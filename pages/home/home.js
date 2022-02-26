@@ -12,9 +12,10 @@ Page({
         swiperHeight:0,
         // 推荐、新歌、原创、飙升歌单
         hotRanking:[],
-        newRanking:[],
-        selfRanking:[],
-        upRanking:[],
+        // newRanking:[],
+        // selfRanking:[],
+        // upRanking:[],
+        rankingList:[],
         // 热门、华语歌单
         hotMusicMenu:[],
         chinaMusicMenu:[]
@@ -45,18 +46,27 @@ Page({
          songStore.dispatch('rankingAction',3)
 
           //获取推荐、新歌、原创、飙升歌单
+        let rankLis=['newRanking','selfRanking','upRanking']
         songStore.onState('hotRanking',res=>{
             this.setData({hotRanking:res.tracks?.slice(0,6)})
-        })
-        songStore.onState('newRanking',res=>{
-            this.setData({newRanking:res.tracks?.slice(0,3)})
-        })
-        songStore.onState('selfRanking',res=>{
-            this.setData({selfRanking:res.tracks?.slice(0,3)})
-        })
-        songStore.onState('upRanking',res=>{
-            this.setData({upRanking:res.tracks?.slice(0,3)})
-        })
+        }) 
+        
+        for(let item of rankLis){ 
+            songStore.onState(item,res=>{
+                if(Object.keys(res).length>0){
+                    this.setData({rankingList:[...this.data.rankingList,{id:res.id,name:res.name,playCount:res.playCount,img:res.coverImgUrl,list:res.tracks?.slice(0,3)}]})
+                }
+            })
+        }
+        // songStore.onState('newRanking',res=>{
+        //     this.data.rankingList.push({name:res.name,img:res.coverImgUrl,list:res.tracks?.slice(0,3)})
+        // })
+        // songStore.onState('selfRanking',res=>{ 
+        //     this.data.rankingList.push({name:res.name,img:res.coverImgUrl,list:res.tracks?.slice(0,3)})
+        // })
+        // songStore.onState('upRanking',res=>{
+        //     this.data.rankingList.push({name:res.name,img:res.coverImgUrl,list:res.tracks?.slice(0,3)})
+        // })
     },
 
     // 获取热门，华语乐坛

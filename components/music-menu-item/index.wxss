@@ -15,11 +15,11 @@
     font-size: 20rpx;
     color: #fff;
     height: 40rpx;
-    width: 100rpx;
+    width: 110rpx;
     border-radius: 20rpx;
     text-align: center;
     line-height: 40rpx;
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.7);
 }
 .info{ 
     font-size: 26rpx;

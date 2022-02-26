@@ -1,0 +1,17 @@
+<!--components/music-peakedness-item/index.wxml-->
+<wxs src="/utils/format.wxs" module="format" ></wxs>
+
+<view class="peakedness-item">
+    <view class="info">
+        <view class="title">{{peakedness.name}}</view>
+        <view class="list">
+            <block wx:for="{{peakedness.list}}" wx:key="id">
+                <view class="list-item">{{index+1}}. {{item.name}} - <text>{{item.ar[0].name}}</text></view>
+            </block>
+        </view>
+    </view>
+    <view class="image">
+        <image class="img" src="{{peakedness.img}}"></image>
+        <view class="count">{{format.formatCount(peakedness.playCount)}}</view>
+    </view>
+</view>

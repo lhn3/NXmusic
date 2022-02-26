@@ -29,3 +29,6 @@ style="height: {{swiperHeight}};">
 
 <!-- 华语 -->
 <music-menu title="华语乐坛" songList="{{chinaMusicMenu}}"></music-menu>
+
+<!-- 巅峰榜 -->
+<music-peakedness title="巅峰榜" isMore="{{false}}" musicList="{{rankingList}}"></music-peakedness>

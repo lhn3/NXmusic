@@ -1,0 +1,51 @@
+/* components/music-peakedness-item/index.wxss */
+
+.peakedness-item{
+    background-color: #eee;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20rpx;
+}
+.info{
+    padding: 20rpx;
+}
+.title{
+    font-size: 32rpx;
+    font-weight: bold;
+}
+.list{
+    margin-top: 20rpx;
+    width: 350rpx;
+    font-size: 24rpx;
+    margin-left: 20rpx;
+}
+.list-item{
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    line-height: 40rpx;
+    overflow: hidden;
+}
+text{
+    color: #8a8a8a;
+}
+.image{
+    position: relative;
+}
+.img{
+    width: 220rpx;
+    height: 220rpx;
+    border-radius: 10rpx;
+}
+.count{
+    position: absolute;
+    right: 10rpx;
+    bottom: 20rpx;
+    font-size: 20rpx;
+    color: #fff;
+    height: 40rpx;
+    width: 110rpx;
+    border-radius: 20rpx;
+    text-align: center;
+    line-height: 40rpx;
+    background-color: rgba(0, 0, 0, 0.7);
+}
