@@ -14,4 +14,10 @@ Component({
             value:[] 
         }
     },
+    methods:{
+        handleClick(e){
+            let info=e.currentTarget.dataset.info
+            this.triggerEvent('peakednessClick',info)
+        }
+    }
 })

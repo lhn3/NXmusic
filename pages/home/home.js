@@ -92,7 +92,27 @@ Page({
             this.setData({swiperHeight:res[0].height+'px'}) 
         })
     },
- 
+
+    //推荐点击更多按钮
+    toMusicList(e){
+        let id=e.currentTarget.dataset.id
+        switch (id){
+            case '1':
+                this.toList('推荐更多')
+                break;
+            case '2':
+                let rankName=e.detail  //发射事件传递的参数
+                this.toList(rankName)
+                break;
+            }
+        },
+    //跳转到列表页
+    toList(name){
+        wx.navigateTo({
+            url: `/pages/musicList/musicList?name=${name}`,
+        })
+    },
+
     //前往搜索页面
     handleSearch(){
         console.log(123)

@@ -2,6 +2,7 @@
 <view>
     <header title="{{title}}" isMore="{{isMore}}"></header>  
     <block wx:for="{{musicList}}" wx:key="id">
-        <music-peakedness-item peakedness="{{item}}"></music-peakedness-item>
+        <music-peakedness-item peakedness="{{item}}" bind:tap="handleClick" data-info="{{item.name}}"></music-peakedness-item>
     </block>
 </view> 
+ 

@@ -16,7 +16,7 @@ style="height: {{swiperHeight}};">
 
 <!-- 推荐 -->
 <view class="recommend">
-    <header title='推荐歌曲'></header>  
+    <header title='推荐歌曲' bind:moreClick="toMusicList" data-id="1"></header>  
     <view class="song-list">
         <block wx:for="{{hotRanking}}" wx:key="id">
            <music-rank item="{{item}}"></music-rank>  
@@ -31,4 +31,4 @@ style="height: {{swiperHeight}};">
 <music-menu title="华语乐坛" songList="{{chinaMusicMenu}}"></music-menu>
 
 <!-- 巅峰榜 -->
-<music-peakedness title="巅峰榜" isMore="{{false}}" musicList="{{rankingList}}"></music-peakedness>
+<music-peakedness title="巅峰榜" isMore="{{false}}" musicList="{{rankingList}}" bind:peakednessClick="toMusicList" data-id="2"></music-peakedness>

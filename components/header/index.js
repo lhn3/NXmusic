@@ -9,5 +9,11 @@ Component({
             type:Boolean,
             value:true
         }
+    },
+    methods:{
+        //点击更多发射事件
+        handleClick(){
+            this.triggerEvent("moreClick")
+        }
     }
 })

@@ -5,16 +5,17 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 20rpx;
+    height: 220rpx;
 }
 .info{
-    padding: 20rpx;
+    padding: 20rpx 20rpx 0 20rpx;
 }
 .title{
     font-size: 32rpx;
     font-weight: bold;
 }
 .list{
-    margin-top: 20rpx;
+    margin-top: 10rpx;
     width: 350rpx;
     font-size: 24rpx;
     margin-left: 20rpx;
@@ -39,7 +40,7 @@ text{
 .count{
     position: absolute;
     right: 10rpx;
-    bottom: 20rpx;
+    bottom: 10rpx;
     font-size: 20rpx;
     color: #fff;
     height: 40rpx;

@@ -6,7 +6,7 @@
         <view class="slot"><slot></slot></view>
         <!-- 插槽为空默认内容 -->
         <view class="default"> 
-            <text>更多</text>
+            <text bind:tap="handleClick">更多</text>
             <image class="icon" src="/assets/images/icons/arrow-right.png"></image>
         </view>
     </view>
