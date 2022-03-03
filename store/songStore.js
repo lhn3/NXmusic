@@ -4,10 +4,10 @@ import {getRanking,getMusicMenu} from '../service/musicAPI'
 let ranking={0:'newRanking',1:'hotRanking',2:'selfRanking',3:'upRanking'}
 export const songStore=new HYEventStore({
     state:{
-        hotRanking:[],  // 推荐歌曲
-        newRanking:[], //新歌榜
-        selfRanking:[],//原创榜
-        upRanking:[],  //飙升榜
+        hotRanking:{},  // 推荐歌曲
+        newRanking:{}, //新歌榜
+        selfRanking:{},//原创榜
+        upRanking:{},  //飙升榜
         hotMusicMenu:[],//热门歌单
         chinaMusicMenu:[]//华语歌单
     },

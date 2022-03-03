@@ -13,7 +13,8 @@
         "components/music-menu-item/index",
         "components/music-peakedness/index",
         "components/music-peakedness-item/index",
-        "pages/musicList/musicList"
+        "pages/musicList/musicList",
+        "components/musicList-item/index"
     ],
     "window": {
         "backgroundTextStyle": "light",

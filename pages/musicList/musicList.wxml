@@ -1,2 +1,6 @@
 <!--pages/musicList/musicList.wxml-->
-<text>pages/musicList/musicList.wxml</text>
+<header title="{{name}}" isMore="{{false}}"></header>
+
+<block  wx:for="{{musicInfo.tracks}}" wx:key="id">
+    <musicList-item item="{{item}}"></musicList-item>
+</block>

@@ -93,7 +93,7 @@ Page({
         })
     },
 
-    //推荐点击更多按钮
+    //根据不同的位置传入不同的id跳转到音乐列表页面
     toMusicList(e){
         let id=e.currentTarget.dataset.id
         switch (id){
@@ -101,11 +101,13 @@ Page({
                 this.toList('推荐更多')
                 break;
             case '2':
+                // 再根据不同的榜单进入音乐列表
                 let rankName=e.detail  //发射事件传递的参数
                 this.toList(rankName)
                 break;
             }
         },
+
     //跳转到列表页
     toList(name){
         wx.navigateTo({
