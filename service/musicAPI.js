@@ -14,3 +14,8 @@ export function getRanking(idx){
 export function getMusicMenu(cat,limit=6,offset=0){
     return NxRequest.get(`/top/playlist?cat=${cat}&limit=${limit}&offset=${offset}`)
 }
+
+// 根据ID请求歌曲列表
+export function getMusicList(id){
+    return NxRequest.get(`/playlist/detail/dynamic?id=${id}`)
+}

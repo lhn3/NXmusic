@@ -93,7 +93,7 @@ Page({
         })
     },
 
-    //根据不同的位置传入不同的id跳转到音乐列表页面
+    //根据不同的位置的ranking传入不同的id跳转到音乐列表页面
     toMusicList(e){
         let id=e.currentTarget.dataset.id
         switch (id){

@@ -1,0 +1,28 @@
+<!--components/musicList-hd/index.wxml-->
+<wxs src="../../utils/format.wxs" module="format"></wxs>
+
+<view class="header">
+    <view class="cover"></view>
+    <image class="coverImgUrl" src="{{musicInfo.coverImgUrl}}" mode="aspectFill"></image>
+    <view class="info"> 
+        <image class="musicAvatar" src="{{musicInfo.coverImgUrl}}"></image>
+        <view class="userInfo">
+            <view class="title">{{musicInfo.name}}</view>
+            <view class="user">
+                <image class="avatar" src="{{musicInfo.creator.avatarUrl}}"></image>
+                <view class="username">{{musicInfo.creator.nickname}}</view>
+            </view>
+            <view class="introduce">简介：{{musicInfo.description}}</view>
+        </view>
+    </view>
+    <view class="control">
+        <view class="like">
+            <image class="like-img" mode="widthFix" src="/assets/images/icons/favor_icon.png"></image>
+            <text class="like-text">{{format.formatCount(musicInfo.playCount)}}</text>
+        </view>
+        <view class="share">
+            <image class="share-img" mode="widthFix" src="/assets/images/icons/share_icon.png"></image>
+            <text class="share-text">分享</text>
+        </view>
+    </view>
+</view>

@@ -1,4 +1,7 @@
 /* pages/musicList/musicList.wxss */
 page{
-    padding: 0 20rpx;
+    box-sizing: border-box;
+}
+.hd{
+    margin-left: 20rpx;
 }

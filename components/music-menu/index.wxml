@@ -5,7 +5,7 @@
         <block wx:for="{{songList}}" wx:key="id">
             <view class="scrollItem"> 
             <!-- 每一个滚动小方块组件 -->
-                <music-menus-item item="{{item}}"></music-menus-item>
+                <music-menus-item item="{{item}}" bindtap="handleClick" data-info="{{item}}"></music-menus-item>
             </view>
         </block>
     </scroll-view>

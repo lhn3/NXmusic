@@ -1,6 +1,16 @@
 <!--pages/musicList/musicList.wxml-->
-<header title="{{name}}" isMore="{{false}}"></header>
 
+<!-- 如果是ranking，展示这个头部 -->
+<view wx:if="{{type == 'ranking'}}" class="hd">
+    <header title="{{name}}" isMore="{{false}}"></header>
+</view>
+
+<!-- 如果是热门和华语歌单展示这个头部 -->
+<block wx:if="{{type == 'other'}}">
+    <musicList-hd musicInfo="{{musicInfo}}"></musicList-hd>
+</block>
+
+<!-- 音乐列表 -->
 <block  wx:for="{{musicInfo.tracks}}" wx:key="id">
-    <musicList-item item="{{item}}"></musicList-item>
+    <musicList-item index="{{index+1}}" item="{{item}}"></musicList-item>
 </block>

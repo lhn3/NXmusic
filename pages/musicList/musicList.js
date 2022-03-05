@@ -1,33 +1,50 @@
 // pages/musicList/musicList.js
 import {songStore} from '../../store/index'
+import {getMusicList} from '../../service/musicAPI'
 Page({
     data: {
         name:'',
+        id:'',
+        type:'',
         musicInfo:{}
     },
 
     onLoad(options) {
+        //如果点击的是ranking或是更多
         this.setData({name:options.name}) 
-        switch(this.data.name){
-            case '推荐更多':
-                this.getMusicInfo('hotRanking')
-                break;
-            case '新歌榜': 
-                this.getMusicInfo('newRanking')
-                break;
-            case '原创榜':
-                this.getMusicInfo('selfRanking')
-                break;
-            case '飙升榜':
-                this.getMusicInfo('upRanking')
-                break;
+        //如果点击的是热门和华语乐坛的音乐列表
+        this.setData({id:options.id}) 
+        
+        if(this.data.name){
+            switch(this.data.name){
+                case '推荐更多':
+                    this.getMusicRankingList('hotRanking')
+                    break;
+                case '新歌榜': 
+                    this.getMusicRankingList('newRanking')
+                    break;
+                case '原创榜':
+                    this.getMusicRankingList('selfRanking')
+                    break;
+                case '飙升榜':
+                    this.getMusicRankingList('upRanking')
+                    break;
+                }
+                this.setData({type:'ranking'})
+        }else if(this.data.id){
+            this.musicList(this.data.id)
+            this.setData({type:'other'})
         }
     },
-    // 获取音乐列表信息
-    getMusicInfo(rankName){
+    getMusicRankingList(rankName){
+        // 获取ranking音乐列表信息
         songStore.onState(rankName,res=>{
             this.setData({musicInfo:res})
         })
+    },
+    //获取热门和华语乐坛音乐列表
+    async musicList(id){
+        let res = await getMusicList(id)
+        this.setData({musicInfo:res.playlist})
     }
-
 })

@@ -13,4 +13,13 @@ Component({
             value:[]
         }
     },
+    methods:{
+        handleClick(e){
+            // 热门和华语乐坛的音乐列表跳转
+            const item = e.currentTarget.dataset.info
+            wx.navigateTo({
+                url: `/pages/musicList/musicList?id=${item.id}`,
+            })
+        }
+    }
 })

@@ -14,7 +14,8 @@
         "components/music-peakedness/index",
         "components/music-peakedness-item/index",
         "pages/musicList/musicList",
-        "components/musicList-item/index"
+        "components/musicList-item/index",
+        "components/musicList-hd/index"
     ],
     "window": {
         "backgroundTextStyle": "light",

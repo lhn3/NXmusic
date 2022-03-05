@@ -1,10 +1,10 @@
 <!--components/musicList-item/index.wxml-->
 <view class="music-list">
-    <view class="number">{{1}}</view>
+    <view class="number">{{index}}</view>
     <view class="message">
         <view class="title">{{item.name}}</view>
         <view class="info">
-            <!-- <image class="img"></image> -->
+            <image class="img" src="/assets/images/icons/sq_icon.png"></image>
             <view class="name">{{item.ar[0].name}}<text wx:if="{{item.alia[0]}}"> - </text>{{item.alia[0]}}</view>
         </view>
     </view>
