@@ -1,7 +1,7 @@
 <!--components/music-menu-item/index.wxml-->
 <wxs src="/utils/format.wxs" module="format" ></wxs>
 
-<view class="item">
+<view class="item" style="width: {{width}};height: {{height}};">
     <image class="img" src="{{item.coverImgUrl}}" mode="widthFix"></image>
     <view class="count">{{format.formatCount(item.playCount)}}</view>
     <view class="info">{{item.name}}</view>

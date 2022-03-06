@@ -1,5 +1,6 @@
 // 播放量过滤
 function formatCount(count){
+    if(count == null) return ''
     var count=parseInt(count)
     if(count>=100000000){
         return (count/100000000).toFixed(1) +' 亿'

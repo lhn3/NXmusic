@@ -1,8 +1,6 @@
 /* components/music-menu-item/index.wxss */
 .item{
     position: relative;
-    width: 200rpx;
-    height: 280rpx;
 }
 .img{
     width: 100%;

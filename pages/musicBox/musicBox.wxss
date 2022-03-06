@@ -1,0 +1,12 @@
+/* pages/musicBox/musicBox.wxss */
+.header{
+    margin-left: 20rpx;
+}
+.main{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.box{
+    margin: 0 10rpx 20rpx 10rpx;
+}

@@ -4,6 +4,14 @@ Component({
         item:{
             type:Object,
             value:{}
+        },
+        width:{
+            type:String,
+            value:'200rpx'
+        },
+        height:{
+            type:String,
+            value:'280rpx'
         }
     }
 })

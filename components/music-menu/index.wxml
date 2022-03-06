@@ -1,11 +1,11 @@
 <!--components/music-menu/index.wxml-->
 <view>
-    <header title="{{title}}"></header> 
+    <header title="{{title}}" bind:moreClick="toMusicBox" data-info="{{title}}" ></header> 
     <scroll-view scroll-x class="scroll">
         <block wx:for="{{songList}}" wx:key="id">
             <view class="scrollItem"> 
             <!-- 每一个滚动小方块组件 -->
-                <music-menus-item item="{{item}}" bindtap="handleClick" data-info="{{item}}"></music-menus-item>
+                <music-menus-item item="{{item}}" bindtap="handleClick" data-info="{{item}}"></music-menus-item> 
             </view>
         </block>
     </scroll-view>

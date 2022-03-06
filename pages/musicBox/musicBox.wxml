@@ -1,0 +1,11 @@
+<!--pages/musicBox/musicBox.wxml-->
+<view class="header">  
+    <header title="{{title}}" isMore="{{false}}"></header>
+</view>
+
+<view class="main">
+    <view class="box" wx:for="{{musicBox}}" wx:key="id">
+        <!-- 每一个小方块组件 -->
+            <music-menus-item item="{{item}}" bindtap="handleClick" data-info="{{item}}" width="{{'345rpx'}}" height="{{'425rpx'}}"></music-menus-item> 
+    </view>
+</view>

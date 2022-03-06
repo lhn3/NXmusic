@@ -20,6 +20,13 @@ Component({
             wx.navigateTo({
                 url: `/pages/musicList/musicList?id=${item.id}`,
             })
+        },
+        //点击更多按钮
+        toMusicBox(e){
+            const title = e.currentTarget.dataset.info
+            wx.navigateTo({
+                url: `/pages/musicBox/musicBox?title=${title}`,
+            })
         }
     }
 })
