@@ -1,7 +1,15 @@
 <!--pages/detail-search/detail-search.wxml-->
-<vant-search 
-background="#fafafa" 
-shape="round" 
-placeholder="搜索你喜欢的歌曲" 
-autofocus
-/>
+<!-- 搜索框 -->
+<vant-search background="#fafafa" shape="round" placeholder="搜索你喜欢的歌曲" autofocus/>
+
+
+<!-- 热门搜索 -->
+<view class="hot">
+    <!-- 标题头 -->
+    <header title="热门搜索" isMore="{{false}}"></header>
+    <view class="list">
+        <block wx:for="{{hotCard}}" wx:key="first">
+            <view class="tag">{{item.first}}</view>
+        </block>
+    </view>
+</view>

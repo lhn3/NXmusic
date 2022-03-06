@@ -14,7 +14,7 @@
             "list": [
                 {
                     "name": "",
-                    "pathName": "pages/home/home",
+                    "pathName": "pages/detail-search/detail-search",
                     "query": "",
                     "scene": null,
                     "launchMode": "default"
