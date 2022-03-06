@@ -21,7 +21,7 @@ Page({
         // 请求加载动画
         wx.showNavigationBarLoading()
         // let res=await getMusicMenu(title,10,offset)
-        let res=await getMusicMenu(title,100,offset)
+        let res=await getMusicMenu(title,50,offset)
         if(res.code==200){
             if(offset==0){
                 this.setData({musicBox:res.playlists})

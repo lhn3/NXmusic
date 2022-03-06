@@ -1,15 +1,28 @@
 <!--pages/detail-search/detail-search.wxml-->
 <!-- 搜索框 -->
-<vant-search background="#fafafa" shape="round" placeholder="搜索你喜欢的歌曲" autofocus/>
+<vant-search background="#fafafa" shape="round" placeholder="搜索你喜欢的歌曲" autofocus bind:change="getSuggest"/>
 
 
 <!-- 热门搜索 -->
-<view class="hot">
+<view class="hot" wx:if="{{!keywords && !suggest.length}}">
     <!-- 标题头 -->
     <header title="热门搜索" isMore="{{false}}"></header>
     <view class="list">
         <block wx:for="{{hotCard}}" wx:key="first">
             <view class="tag">{{item.first}}</view>
+        </block>
+    </view>
+</view>
+
+<!-- 搜索后展示的结果 -->
+<view wx:else class="suggest">
+    <view class="title">搜索："{{keywords}}"</view>
+    <view class="list">
+        <block wx:for="{{suggest}}" wx:key="keyword">
+            <view class="item">
+                <image mode="widthFix" class="icon" src="/assets/images/icons/search_icon.png"></image>
+                <text class="text">{{item.keyword}}</text>
+            </view>
         </block>
     </view>
 </view>

@@ -4,3 +4,8 @@ import NxRequest from './index'
 export function getHotCard(){
    return NxRequest.get('/search/hot')
 }
+
+//输入关键字发送请求
+export function getSearchSuggest(keywords){
+   return NxRequest.get(`/search/suggest?keywords=${keywords}&type=mobile`)
+}
