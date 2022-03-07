@@ -1,6 +1,14 @@
 /* pages/detail-search/detail-search.wxss */
 page{
-    padding: 0 20rpx;
+    padding: 54px 20rpx 0 20rpx;
+    
+}
+.search{
+    position: fixed;
+    left: 20rpx;
+    right: 20rpx;
+    top: 0;
+    /* width: 100%; */
 }
 .van-search__content{
     background-color:#fff !important;

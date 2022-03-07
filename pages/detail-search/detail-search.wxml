@@ -1,6 +1,14 @@
 <!--pages/detail-search/detail-search.wxml-->
 <!-- 搜索框 -->
-<vant-search background="#fafafa" shape="round" placeholder="搜索你喜欢的歌曲" autofocus bind:change="getSuggest"/>
+<vant-search 
+class="search"
+background="#fafafa" 
+shape="round" 
+placeholder="搜索你喜欢的歌曲" 
+autofocus 
+bind:change="getSuggest" 
+bind:search="searchAction" 
+value="{{keywords}}"/>
 
 
 <!-- 热门搜索 -->
@@ -9,21 +17,28 @@
     <header title="热门搜索" isMore="{{false}}"></header>
     <view class="list">
         <block wx:for="{{hotCard}}" wx:key="first">
-            <view class="tag">{{item.first}}</view>
+            <view class="tag" bindtap="titleSearch" data-keywords="{{item.first}}">{{item.first}}</view>
         </block>
     </view>
 </view>
 
-<!-- 搜索后展示的结果 -->
-<view wx:else class="suggest">
+<!-- 输入搜索内容后展示的结果 -->
+<view wx:elif="{{suggest.length && !showList}}" class="suggest">
     <view class="title">搜索："{{keywords}}"</view>
     <view class="list">
-        <block wx:for="{{suggestNodes}}" wx:key="keyword">
-            <view class="item">
+        <block wx:for="{{suggest}}" wx:key="keyword">
+            <view class="item" bindtap="titleSearch" data-keywords="{{item.keyword}}">
                 <image mode="widthFix" class="icon" src="/assets/images/icons/search_icon.png"></image>
                 <!-- <text class="text">{{item.keyword}}</text> -->
-                <rich-text nodes="{{item}}"></rich-text>
+                <rich-text nodes="{{suggestNodes[index]}}"></rich-text>
             </view>
         </block>
     </view>
+</view>
+
+<!-- 搜索歌单列表 -->
+<view wx:elif="{{showList}}">
+    <block  wx:for="{{searchValue}}" wx:key="id">
+        <musicList-item index="{{index+1}}" item="{{item}}"></musicList-item>
+    </block>
 </view>

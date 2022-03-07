@@ -9,3 +9,8 @@ export function getHotCard(){
 export function getSearchSuggest(keywords){
    return NxRequest.get(`/search/suggest?keywords=${keywords}&type=mobile`)
 }
+
+//按下enter键发送请求
+export function getSearchValue(keywords,offset){
+   return NxRequest.get(`/search?keywords=${keywords}?offset=${offset}`)
+}

@@ -1,6 +1,8 @@
 // pages/detail-search/detail-search.js
-import {getHotCard,getSearchSuggest} from '../../service/searchAPI'
+import {getHotCard,getSearchSuggest,getSearchValue} from '../../service/searchAPI'
 import {debounce} from '../../utils/debounce'
+import {stringNode} from '../../utils/stringNode'
+
 //返回一个防抖函数
 let de_getSearchSuggest=debounce(getSearchSuggest,300)
 Page({
@@ -8,7 +10,10 @@ Page({
         hotCard:[],
         suggest:[],
         keywords:'',
-        suggestNodes:[]
+        suggestNodes:[],
+        searchValue:[],
+        hasMore:true,
+        showList:false
     },
 
     onLoad(options) {
@@ -27,6 +32,8 @@ Page({
     async getSuggest(e){
         let keywords=e.detail
         this.setData({keywords:keywords})
+        this.setData({showList:false})
+        this.setData({searchValue:[]})
         // 搜索内容删除后列表清空
         if(!keywords.lenght){
             this.setData({suggest:[]})
@@ -39,42 +46,41 @@ Page({
             let suggestKeywords=this.data.suggest.map(item=>{
                 return item.keyword
             })
+            //每次搜索清空节点
             this.setData({suggestNodes:[]})
-            //全部行节点
-            let suggestNodes=[]
-            for(let word of suggestKeywords){
-                //一行的节点
-                let nodes=[]
-                // 如果是以输入的内容开头
-                if(word.startsWith(keywords)){
-                    // 切割出相同的部分
-                    const k1=word.slice(0,keywords.length)
-                    //建立一个node
-                    const node1={
-                        name:'span',
-                        attrs:{style:'color: #26ce8a;'},
-                        children:[{type:'text',text:k1}]
-                    }
-                    nodes.push(node1)
-                    // 切割出不同的部分
-                    const k2=word.slice(keywords.length)
-                    const node2={
-                        name:'span',
-                        attrs:{style:'color: #000;'},
-                        children:[{type:'text',text:k2}]
-                    }
-                    nodes.push(node2)
-                }else{
-                    const node={
-                        name:'span',
-                        attrs:{style:'color:#000;'},
-                        children:[{type:'text',text:word}]
-                    }
-                    nodes.push(node)
-                }
-                suggestNodes.push(nodes)
-            }
+            // 获取过滤后的富文本节点
+            let suggestNodes=stringNode(keywords,suggestKeywords)
             this.setData({suggestNodes})
         }
-    }
+    },
+
+    // 搜索框enter键发送请求
+    async searchAction(offset = 0){
+        this.setData({showList:true})
+        let keywords = this.data.keywords
+        wx.showNavigationBarLoading()
+        let res = await getSearchValue(keywords,offset)
+        if(res.code == 200){
+            if(offset == 0){
+                this.setData({searchValue:res.result.songs})
+            }else{
+                this.setData({searchValue:[...this.data.searchValue,...res.result.songs]})
+            }
+            this.setData({hasMore:res.result.hasMore})
+        }
+        wx.hideNavigationBarLoading()
+    },
+
+    //点击热门词汇或搜索出来的关键词进行搜索
+    titleSearch(e){
+        let keywords=e.currentTarget.dataset.keywords
+        this.setData({keywords})
+        this.searchAction()
+    },
+
+    //页面上拉触底事件的处理函数
+    // onReachBottom() {
+    //     if(!this.data.hasMore) return;
+    //     this.searchAction(this.data.searchValue.length)
+    // },
 })
