@@ -1,5 +1,5 @@
 <!--components/musicList-item/index.wxml-->
-<view class="music-list">
+<view class="music-list" bindtap="toMusicPlayer" data-id="{{item.id}}">
     <view class="number">{{index}}</view>
     <view class="message">
         <view class="title">{{item.name}}</view>

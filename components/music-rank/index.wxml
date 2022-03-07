@@ -1,6 +1,6 @@
 <!--components/music-rank/index.wxml-->
 <!-- 推荐歌曲组件 -->
-<view class="rankItem">
+<view class="rankItem" bindtap="toMusicPlayer" data-id="{{item.id}}">
     <image class="rankImg" src="{{item.al.picUrl}}"></image>
     <view class="rankInfo"> 
         <view class="rankTitle">{{item.name}}</view> 

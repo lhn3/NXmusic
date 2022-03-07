@@ -31,12 +31,10 @@ Page({
     //输入关键字发送请求
     async getSuggest(e){
         let keywords=e.detail
-        this.setData({keywords:keywords})
-        this.setData({showList:false})
-        this.setData({searchValue:[]})
+        this.setData({keywords:keywords,showList:false,searchValue:[]})
         // 搜索内容删除后列表清空
-        if(!keywords.lenght){
-            this.setData({suggest:[]})
+        if(!this.data.keywords.length){
+            this.setData({suggest:[],suggestNodes:[]})
         }
         let res = await de_getSearchSuggest(keywords)
         if(res.code==200){

@@ -5,5 +5,13 @@ Component({
             type:Object,
             value:{}
         }
+    },
+    methods:{
+        toMusicPlayer(e){
+            let id = e.currentTarget.dataset.id
+            wx.navigateTo({
+              url: `/pages/music-player/music-player?id=${id}`,
+            })
+        }
     }
 })

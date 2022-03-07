@@ -9,5 +9,14 @@ Component({
             type:Number,
             value:1
         }
+    },
+    methods:{
+        //点击前往播放页面
+        toMusicPlayer(e){
+            let id = e.currentTarget.dataset.id
+            wx.navigateTo({
+              url: `/pages/music-player/music-player?id=${id}`,
+            })
+        }
     }
 })

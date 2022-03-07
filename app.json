@@ -16,7 +16,8 @@
         "pages/musicList/musicList",
         "components/musicList-item/index",
         "components/musicList-hd/index",
-        "pages/musicBox/musicBox"
+        "pages/musicBox/musicBox",
+        "pages/music-player/music-player"
     ],
     "window": {
         "backgroundTextStyle": "light",

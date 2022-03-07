@@ -14,8 +14,15 @@
             "list": [
                 {
                     "name": "",
-                    "pathName": "pages/detail-search/detail-search",
+                    "pathName": "pages/home/home",
                     "query": "",
+                    "launchMode": "default",
+                    "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/music-player/music-player",
+                    "query": "id=441491828",
                     "scene": null,
                     "launchMode": "default"
                 }

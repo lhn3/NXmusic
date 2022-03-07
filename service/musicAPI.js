@@ -19,3 +19,8 @@ export function getMusicMenu(cat,limit=6,offset=0){
 export function getMusicList(id){
     return NxRequest.get(`/playlist/detail/dynamic?id=${id}`)
 }
+
+// 根据ID请求歌曲详情
+export function getMusicDetail(id){
+    return NxRequest.get(`/song/detail?ids=${id}`)
+}

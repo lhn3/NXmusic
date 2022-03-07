@@ -1,0 +1,7 @@
+<!--pages/music-player/music-player.wxml-->
+<image mode="aspectFill" class="coverImg" src="{{musicInfo.al.picUrl}}"></image>
+<view class="cover"></view>
+
+
+
+
