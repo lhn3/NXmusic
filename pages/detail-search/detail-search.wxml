@@ -18,10 +18,11 @@
 <view wx:else class="suggest">
     <view class="title">搜索："{{keywords}}"</view>
     <view class="list">
-        <block wx:for="{{suggest}}" wx:key="keyword">
+        <block wx:for="{{suggestNodes}}" wx:key="keyword">
             <view class="item">
                 <image mode="widthFix" class="icon" src="/assets/images/icons/search_icon.png"></image>
-                <text class="text">{{item.keyword}}</text>
+                <!-- <text class="text">{{item.keyword}}</text> -->
+                <rich-text nodes="{{item}}"></rich-text>
             </view>
         </block>
     </view>
