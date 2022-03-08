@@ -34,17 +34,17 @@
         <view class="lyric" wx:if="{{isShowLyric}}">我是歌词</view>
         <!-- 进度条 -->
         <view class="progress">
-            <slider block-size="15"></slider>
+            <slider block-size="15" bindchange="sliderChange" bindchanging="sliderChanging" value="{{sliderValue}}"></slider>
             <view class="time">
                 <view class="current">{{format.formatTime(currentTime)}}</view>
-                <view class="duration">{{format.formatTime(musicInfo.dt)}}</view>
+                <view class="duration">{{format.formatTime(totalTime)}}</view>
             </view>
         </view>
         <!-- 控制播放 -->
         <view class="operation">
             <image class="btn btn-mode" src="/assets/images/player/play_order.png"></image>
             <image class="btn btn-prev" src="/assets/images/player/play_prev.png"></image>
-            <image class="btn btn-pause" src="/assets/images/player/play_pause.png"></image>
+            <image class="btn btn-pause" src="/assets/images/player/play_pause.png" bindtap="pause"></image>
             <image class="btn btn-next" src="/assets/images/player/play_next.png"></image>
             <image class="btn btn-music" src="/assets/images/player/play_music.png"></image>
         </view>
