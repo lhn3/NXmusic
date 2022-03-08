@@ -1,7 +1,11 @@
 <!--pages/music-player/music-player.wxml-->
+<wxs src="../../utils/format.wxs" module="format"></wxs>
+
+<!-- 背景 -->
 <image mode="aspectFill" class="coverImg" src="{{musicInfo.al.picUrl}}"></image>
 <view class="cover"></view>
 
+<!-- navbar -->
 <navBar>
     <view class="tab" slot="center">
         <view class="{{current==0?'active':''}}">歌曲</view>
@@ -12,6 +16,7 @@
 
 <!-- 滚动页面 -->
 <swiper style="height: {{currentHeight}}px;" bindchange="currentChange" class="content">
+<!-- 歌曲页面 -->
     <swiper-item class="swiper-song">
         <!-- 封面图片 -->
         <view class="album">
@@ -21,16 +26,18 @@
         <view class="info">
             <view class="title">{{musicInfo.name}}</view>
             <view class="singer">{{musicInfo.ar[0].name}}</view>
-            <view class="alias">{{musicInfo.al.name}}</view>
+            <view class="alias">
+                <text wx:if="{{musicInfo.alia[0]}}">专辑：</text>{{musicInfo.alia[0]}}
+            </view>
         </view>
         <!-- 歌词 -->
-        <view class="lyric">我是歌词</view>
+        <view class="lyric" wx:if="{{isShowLyric}}">我是歌词</view>
         <!-- 进度条 -->
         <view class="progress">
             <slider block-size="15"></slider>
             <view class="time">
-                <view class="current">1:40</view>
-                <view class="duration">5:20</view>
+                <view class="current">{{format.formatTime(currentTime)}}</view>
+                <view class="duration">{{format.formatTime(musicInfo.dt)}}</view>
             </view>
         </view>
         <!-- 控制播放 -->
@@ -42,6 +49,8 @@
             <image class="btn btn-music" src="/assets/images/player/play_music.png"></image>
         </view>
     </swiper-item>
+
+<!-- 歌词页面 -->
     <swiper-item class="swiper-lyric">2</swiper-item>
 </swiper>
 

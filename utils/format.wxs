@@ -28,7 +28,7 @@ function formatTime(time){
     }else if(second>=60){
         return leftZero(Math.floor(second/60))+':'+leftZero(second%60)
     }else{
-        return leftZero(second)
+        return '00'+':'+leftZero(second%60)
     } 
 }
 
