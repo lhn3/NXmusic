@@ -23,5 +23,11 @@ Page({
         if(res.code==200){
             this.setData({musicInfo:res.songs[0]})
         }
+    },
+
+    // 滑动选择歌曲或歌词
+    currentChange(e){
+        let current = e.detail.current
+        this.setData({current})
     }
 })

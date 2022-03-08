@@ -11,9 +11,38 @@
 </navBar>
 
 <!-- 滚动页面 -->
-<swiper style="height: {{currentHeight}}px;">
-    <swiper-item>1</swiper-item>
-    <swiper-item>2</swiper-item>
+<swiper style="height: {{currentHeight}}px;" bindchange="currentChange" class="content">
+    <swiper-item class="swiper-song">
+        <!-- 封面图片 -->
+        <view class="album">
+            <image class="img" src="{{musicInfo.al.picUrl}}" mode="widthFix"></image>
+        </view>
+        <!-- 歌曲信息 -->
+        <view class="info">
+            <view class="title">{{musicInfo.name}}</view>
+            <view class="singer">{{musicInfo.ar[0].name}}</view>
+            <view class="alias">{{musicInfo.al.name}}</view>
+        </view>
+        <!-- 歌词 -->
+        <view class="lyric">我是歌词</view>
+        <!-- 进度条 -->
+        <view class="progress">
+            <slider block-size="15"></slider>
+            <view class="time">
+                <view class="current">1:40</view>
+                <view class="duration">5:20</view>
+            </view>
+        </view>
+        <!-- 控制播放 -->
+        <view class="operation">
+            <image class="btn btn-mode" src="/assets/images/player/play_order.png"></image>
+            <image class="btn btn-prev" src="/assets/images/player/play_prev.png"></image>
+            <image class="btn btn-pause" src="/assets/images/player/play_pause.png"></image>
+            <image class="btn btn-next" src="/assets/images/player/play_next.png"></image>
+            <image class="btn btn-music" src="/assets/images/player/play_music.png"></image>
+        </view>
+    </swiper-item>
+    <swiper-item class="swiper-lyric">2</swiper-item>
 </swiper>
 
 
