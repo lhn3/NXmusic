@@ -6,10 +6,13 @@ App({
         let res=wx.getSystemInfoSync()
         this.globalDate.screenWidth=res.screenWidth
         this.globalDate.screenHeight=res.screenHeight
+        // 状态栏高度
+        this.globalDate.statusBarHeight=res.statusBarHeight
     },
     // 定义一个全局变量
     globalDate:{
         screenWidth:0,
-        screenHeight:0
+        screenHeight:0,
+        statusBarHeight:0
     }
 })

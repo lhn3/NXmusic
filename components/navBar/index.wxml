@@ -1,0 +1,22 @@
+<!--components/navBar/index.wxml-->
+<view>
+    <view class="top" style="height: {{statusBarHeight}}px; width: 100%;"></view>
+    <view class="nav"> 
+        <view class="left">
+            <!-- 左边插槽 -->
+            <view class="left-slot"><slot name="left"></slot></view> 
+            <image class="img" src="/assets/images/icons/arrow-left.png"></image>
+        </view>
+        
+        <view class="center">
+            <!-- 中间插槽 -->
+            <view class="center-slot"><slot name="center"></slot></view> 
+            <view class="title">默认标题</view>
+        </view>
+
+        <view class="right">
+            <slot name="right"></slot>    
+        </view>
+    </view>
+
+</view>

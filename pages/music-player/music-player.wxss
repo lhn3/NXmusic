@@ -14,3 +14,15 @@ page{
     background-color: rgba(0, 0, 0, .5);
     backdrop-filter: blur(20px);
 }
+.tab{
+    display: flex;
+    justify-content: center;
+    font-size: 30rpx;
+}
+.div{
+    margin: 0 10rpx;
+}
+.active{
+    color: #26ce8a;
+    font-weight:bold;
+}

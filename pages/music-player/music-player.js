@@ -3,12 +3,18 @@ import {getMusicDetail} from '../../service/musicAPI'
 Page({
     data: {
         id:null,
-        musicInfo:{}
+        musicInfo:{},
+        current:0,         //点击歌词或是歌曲
+        currentHeight:'' //滑动页面高度
     },
 
     onLoad(options) {
         this.setData({id:options.id})
         this.getMusicInfo(this.data.id)
+        // 获取页面滑动的高度
+        let gd=getApp().globalDate
+        let currentHeight=gd.screenHeight-gd.statusBarHeight-44
+        this.setData({currentHeight})
     },
 
     //获取歌曲详情

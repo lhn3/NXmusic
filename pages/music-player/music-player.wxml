@@ -2,6 +2,20 @@
 <image mode="aspectFill" class="coverImg" src="{{musicInfo.al.picUrl}}"></image>
 <view class="cover"></view>
 
+<navBar>
+    <view class="tab" slot="center">
+        <view class="{{current==0?'active':''}}">歌曲</view>
+        <view class="div">|</view>
+        <view class="{{current==1?'active':''}}">歌词</view>
+    </view>
+</navBar>
+
+<!-- 滚动页面 -->
+<swiper style="height: {{currentHeight}}px;">
+    <swiper-item>1</swiper-item>
+    <swiper-item>2</swiper-item>
+</swiper>
+
 
 
 
