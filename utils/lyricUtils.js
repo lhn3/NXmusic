@@ -14,7 +14,9 @@ export default function (lyricString){
         let time=mime+second+mill
 
         let lyric=lrc.replace(timeString[0],'')  //替换时间取出歌词
-        lyricList.push({time,lyric})            //时间和歌词的对象
+        if(lyric!==''){
+            lyricList.push({time,lyric})        //时间和歌词的对象
+        }
     }
     return lyricList
 }

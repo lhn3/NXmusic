@@ -13,6 +13,7 @@ Page({
         isShowLyric:true, //是否展示歌词
         currentTime:0,   //播放了多长时间
         lyric:'',          //正在展示的歌词
+        lyricIndex:0,      //歌词索引
         sliderValue:0,    //滑块的值
         isSlider:false    //是否正在滑动
     },
@@ -49,7 +50,7 @@ Page({
         }
     },
 
-    //根据时间匹配歌词
+    //匹配歌词
     lyricToShow(){
         let lyricList=this.data.lyricList
         let currentTime=this.data.currentTime
@@ -57,7 +58,7 @@ Page({
             //如果歌词时间大于当前播放的时候就使用上一次的歌词
             if(lyricList[i].time > currentTime){
                 if(this.data.lyric == lyricList[i-1].lyric) return;
-                this.setData({lyric:lyricList[i-1].lyric})
+                this.setData({lyric:lyricList[i-1].lyric,lyricIndex:i-1})
                 return;
             }
         }

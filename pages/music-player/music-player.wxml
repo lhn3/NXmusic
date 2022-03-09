@@ -52,7 +52,17 @@
     </swiper-item>
 
 <!-- 歌词页面 -->
-    <swiper-item class="swiper-lyric">2</swiper-item>
+    <swiper-item class="swiper-lyric">
+        <scroll-view class="lyric-list" scroll-y scroll-with-animation scroll-top="{{lyricIndex*35}}">
+            <block wx:for="{{lyricList}}" wx:key="index">
+            <!-- 只展示有内容的歌词，播放到的歌词样式改变，第一个和最后一句歌词加上页面高度的一半 -->
+                <view class="{{index==lyricIndex?'active item':'item'}}" 
+                    style="padding-top: {{index==0?currentHeight/2-44+'px':'0'}};padding-bottom: {{index==lyricList.length-1?currentHeight/2+44+'px':'0'}};">
+                    {{item.lyric}}
+                </view>
+            </block>
+        </scroll-view>
+    </swiper-item>
 </swiper>
 
 
