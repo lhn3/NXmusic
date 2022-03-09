@@ -24,3 +24,8 @@ export function getMusicList(id){
 export function getMusicDetail(id){
     return NxRequest.get(`/song/detail?ids=${id}`)
 }
+
+//请求歌曲详情
+export function getMusicLyric(id){
+    return NxRequest.get(`/lyric?id=${id}`)
+}

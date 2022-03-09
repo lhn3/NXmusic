@@ -31,7 +31,8 @@
             </view>
         </view>
         <!-- 歌词 -->
-        <view class="lyric" wx:if="{{isShowLyric}}">我是歌词</view>
+        <!-- <view class="lyric" wx:if="{{isShowLyric}}">{{lyric}}</view> -->
+        <view class="lyric">{{lyric}}</view>
         <!-- 进度条 -->
         <view class="progress">
             <slider block-size="15" bindchange="sliderChange" bindchanging="sliderChanging" value="{{sliderValue}}"></slider>

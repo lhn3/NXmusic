@@ -75,6 +75,9 @@ page{
     justify-content: center;
     flex: 1;
   }
+  .lyric{
+    color: #26ce8a;
+  }
   
   /* 进度 */
   .progress {
