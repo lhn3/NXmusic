@@ -1,26 +1,29 @@
 // pages/music-player/music-player.js
-import {getMusicDetail,getMusicLyric} from '../../service/musicAPI'
-import {audio} from '../../utils/playStore'
-import lyricUtils from '../../utils/lyricUtils'
+import {audio,playStore} from '../../store/playStore'
 Page({
     data: {
-        id:null,
-        musicInfo:{},
-        lyricList:[],      //歌词
+        id:null,           //歌曲id
+
+        musicInfo:{},     //歌曲详情
         totalTime:0,      //歌曲总时长
-        current:0,        //点击歌词或是歌曲
-        currentHeight:'', //滑动页面高度
-        isShowLyric:true, //是否展示歌词
+        lyricList:[],      //歌词
+
         currentTime:0,   //播放了多长时间
         lyric:'',          //正在展示的歌词
-        lyricIndex:0,      //歌词索引
         sliderValue:0,    //滑块的值
-        isSlider:false    //是否正在滑动
+        isSlider:false,    //是否正在滑动
+        isPlay:true,        //是否正在播放
+
+        currentHeight:'', //滑动页面高度
+        isShowLyric:true, //是否展示歌词
+        lyricIndex:0,      //歌词索引
+        current:0,        //点击歌词或是歌曲
     },
 
     onLoad(options) {
         this.setData({id:options.id})
-        this.getMusicInfo(this.data.id)
+        playStore.dispatch('getMusicInfoAction',this.data.id)
+        this.getMusicInfo()
         //适配
         this.listenPage()
         // 音乐播放
@@ -36,18 +39,24 @@ Page({
         this.setData({currentHeight, isShowLyric: hw >= 2 ? true : false})
     },
 
-    //数据请求----------------------------------------------------------------------------------------
-    //获取歌曲详情
-    async getMusicInfo(id){
-        let detail=await getMusicDetail(id)
-        let lyric=await getMusicLyric(id)
-        if(detail.code==200){
-            this.setData({musicInfo:detail.songs[0],totalTime:detail.songs[0].dt})
-        } 
-        if(lyric.code==200){
-            let lyricList = lyricUtils(lyric.lrc.lyric)
-            this.setData({lyricList})
-        }
+    handle_song(){
+        this.setData({current:0})
+    },
+    handle_lyric(){
+        this.setData({current:1})
+    },
+    
+    // 监听数据变化赋值
+    getMusicInfo(){ 
+        playStore.onStates(['musicInfo','totalTime','lyricList'],({
+            musicInfo,
+            totalTime,
+            lyricList
+        })=>{
+            this.setData({musicInfo});
+            this.setData({totalTime});
+            this.setData({lyricList});
+        })
     },
 
     //匹配歌词
@@ -66,12 +75,6 @@ Page({
 
      // 音乐播放功能
      audioCurrent(){
-        audio.stop()            //先停止
-        audio.src=`https://music.163.com/song/media/outer/url?id=${this.data.id}.mp3`
-        // audio.autoplay=true  //自动播放
-        audio.onCanplay(()=>{   //准备好了
-            audio.play()     //调用播放
-        }) 
         audio.onTimeUpdate(()=>{//监听时间变化
             if(!this.data.isSlider){
                 let currentTime = audio.currentTime*1000                //播放了的时间
@@ -80,9 +83,19 @@ Page({
             }
             this.lyricToShow()
         })
+        audio.onPlay(()=>{// 监听播放
+            this.setData({isPlay:true})
+        })
+        audio.onPause(()=>{
+            this.setData({isPlay:false})
+        })
     },
 
     //事件监听----------------------------------------------------------------------------------------
+    //返回
+    back(){
+        wx.navigateBack()
+    },
     // 滑动选择歌曲或歌词
     currentChange(e){
         let current = e.detail.current
@@ -107,7 +120,12 @@ Page({
     },
 
     // 暂停开始播放
-    pause(){
-        audio.pause()
+    pauseOrresume(){
+        // 监听播放
+        if(this.data.isPlay){
+            audio.pause()
+        }else{
+            audio.play()
+        }
     }
 })

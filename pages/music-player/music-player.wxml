@@ -6,16 +6,16 @@
 <view class="cover"></view>
 
 <!-- navbar -->
-<navBar>
+<navBar bind:leftClick="back">
     <view class="tab" slot="center">
-        <view class="{{current==0?'active':''}}">歌曲</view>
+        <view class="{{current==0?'active':''}}" bindtap="handle_song">歌曲</view>
         <view class="div">|</view>
-        <view class="{{current==1?'active':''}}">歌词</view>
+        <view class="{{current==1?'active':''}}" bindtap="handle_lyric">歌词</view>
     </view>
 </navBar>
 
 <!-- 滚动页面 -->
-<swiper style="height: {{currentHeight}}px;" bindchange="currentChange" class="content">
+<swiper style="height: {{currentHeight}}px;" bindchange="currentChange" class="content" current="{{current}}">
 <!-- 歌曲页面 -->
     <swiper-item class="swiper-song">
         <!-- 封面图片 -->
@@ -45,7 +45,7 @@
         <view class="operation">
             <image class="btn btn-mode" src="/assets/images/player/play_order.png"></image>
             <image class="btn btn-prev" src="/assets/images/player/play_prev.png"></image>
-            <image class="btn btn-pause" src="/assets/images/player/play_pause.png" bindtap="pause"></image>
+            <image class="btn btn-pause" src="/assets/images/player/{{isPlay?'play_pause':'play_resume'}}.png" bindtap="pauseOrresume"></image>
             <image class="btn btn-next" src="/assets/images/player/play_next.png"></image>
             <image class="btn btn-music" src="/assets/images/player/play_music.png"></image>
         </view>

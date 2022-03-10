@@ -11,6 +11,8 @@ Component({
 
     },
     methods:{
-
+        handleLeft(){
+            this.triggerEvent('leftClick')
+        }
     }
 })

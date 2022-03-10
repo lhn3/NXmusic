@@ -2,7 +2,7 @@
 <view>
     <view class="top" style="height: {{statusBarHeight}}px; width: 100%;"></view>
     <view class="nav"> 
-        <view class="left">
+        <view class="left" bindtap="handleLeft">
             <!-- 左边插槽 -->
             <view class="left-slot"><slot name="left"></slot></view> 
             <image class="img" src="/assets/images/icons/arrow-left.png"></image>
