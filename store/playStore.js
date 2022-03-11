@@ -6,9 +6,19 @@ const audio=wx.createInnerAudioContext()
 
 const playStore=new HYEventStore({
     state:{
+        // 定值
+        id:null,
         musicInfo:{},     //歌曲详情
         totalTime:0,      //歌曲总时长
         lyricList:[],      //歌词
+
+        // 动值        
+        currentTime:0,   //播放了多长时间
+        lyric:'',          //正在展示的歌词
+        sliderValue:0,    //滑块的值
+        isSlider:false,    //是否正在滑动
+        isPlay:true,        //是否正在播放
+        lyricIndex:0,      //歌词索引
     },
     actions:{
         // 请求音乐数据和歌词
@@ -25,15 +35,69 @@ const playStore=new HYEventStore({
                 let lyricList = lyricUtils(lyric.lrc.lyric)
                 ctx.lyricList=lyricList
             }
-
             //开启播放
+            this.dispatch('playAction')
+        },
+        // 播放
+        playAction(ctx){
             audio.stop()            //先停止
-            audio.src=`https://music.163.com/song/media/outer/url?id=${id}.mp3`
+            audio.src=`https://music.163.com/song/media/outer/url?id=${ctx.id}.mp3`
             audio.autoplay=true  //自动播放
             audio.onCanplay(()=>{//准备好了
                 audio.play()     //调用播放
             }) 
+            audio.onTimeUpdate(()=>{//监听时间变化
+                if(!ctx.isSlider){
+                    ctx.currentTime = audio.currentTime*1000           //播放了的时间
+                    ctx.sliderValue = (ctx.currentTime/ctx.totalTime)*100 //进度条的位置
+                }
+                this.dispatch('lyricToShowAction')
+            })
+            audio.onPlay(()=>{// 监听播放
+                ctx.isPlay=true
+            })
+            audio.onPause(()=>{
+                ctx.isPlay=false
+            })
         },
+        //获取当前播放的歌词
+        lyricToShowAction(ctx){
+            let lyricList=ctx.lyricList
+            let currentTime=ctx.currentTime
+            for(let i=0; i<lyricList.length; i++){
+                //如果歌词时间大于当前播放的时候就使用上一次的歌词
+                if(lyricList[i].time > currentTime){
+                    if(ctx.lyric == lyricList[i-1].lyric) return;
+                    ctx.lyric=lyricList[i-1].lyric
+                    ctx.lyricIndex=i-1
+                    return;
+                }
+            }
+        },
+        //监听进度条点击和滑动后松开
+        sliderChangeAction(ctx,value){
+            let clickCurrentTime = ctx.totalTime*value/100   //计算点击后的播放时间
+            audio.pause()              //暂停播放
+            audio.seek(clickCurrentTime/1000)//跳转播放
+            ctx.sliderValue=value
+            ctx.currentTime=clickCurrentTime
+            ctx.isSlider=false
+        },
+        //监听进度条拖拽过程中
+        sliderChangingAction(ctx,value){
+            let changeCurrentTime=ctx.totalTime*value/100//计算滑动时的播放时间
+            ctx.isSlider=true
+            ctx.currentTime=changeCurrentTime            //只需设置跟随变动的时间
+        },
+        // 暂停开始播放
+        pauseOrresumeAction(ctx){
+            // 监听播放
+            if(ctx.isPlay){
+                audio.pause()
+            }else{
+                audio.play()
+            }
+        }
     }
 })
 
