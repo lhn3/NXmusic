@@ -32,3 +32,6 @@ style="height: {{swiperHeight}};">
 
 <!-- 巅峰榜 -->
 <music-peakedness title="巅峰榜" isMore="{{false}}" musicList="{{rankingList}}" bind:peakednessClick="toMusicList" data-id="2"></music-peakedness>
+
+<!--  -->
+<play-bottom></play-bottom>

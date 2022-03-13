@@ -110,6 +110,4 @@ Page({
         playStore.dispatch('pnPlayAction','next')
         this.getMusicInfo()
     }
-
-
 })

@@ -2,6 +2,7 @@
   "enablePullDownRefresh": true,
   "usingComponents": {
     "header":"/components/header/index",
-    "music-menus-item":"/components/music-menu-item/index"
+    "music-menus-item":"/components/music-menu-item/index",
+    "play-bottom":"/components/play-bottom/index"
   }
 }

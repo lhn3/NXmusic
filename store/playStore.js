@@ -8,11 +8,12 @@ const playStore=new HYEventStore({
     state:{
         // 定值
         id:null,
-        musicInfo:{},     //歌曲详情
+        musicInfo:{},     //歌曲详情 
         totalTime:0,      //歌曲总时长
         lyricList:[],      //歌词
         playList:[],       //播放列表
         playIndex:0,       //播放索引
+        onAudio:false,     //监听标记
 
         // 动值        
         currentTime:0,   //播放了多长时间
@@ -37,10 +38,11 @@ const playStore=new HYEventStore({
             ctx.lyricIndex=0
 
             ctx.id=id
+            wx.setStorageSync('musicId',id)   //歌曲Id储存到本地
             let detail=await getMusicDetail(id)
             let lyric=await getMusicLyric(id)
             if(detail.code==200){
-                ctx.musicInfo=detail.songs[0]
+                ctx.musicInfo=detail.songs[0] 
                 ctx.totalTime=detail.songs[0].dt
             } 
             if(lyric.code==200){
@@ -55,10 +57,11 @@ const playStore=new HYEventStore({
         playAction(ctx){
             audio.stop()            //先停止
             audio.src=`https://music.163.com/song/media/outer/url?id=${ctx.id}.mp3`
-            audio.autoplay=true  //自动播放
             audio.onCanplay(()=>{//准备好了
                 audio.play()     //调用播放
             }) 
+            if (ctx.onAudio) return;//如果添加过监听了就返回
+            ctx.onAudio=true
             audio.onTimeUpdate(()=>{//监听时间变化
                 if(!ctx.isSlider){
                     ctx.currentTime = audio.currentTime*1000           //播放了的时间
@@ -71,6 +74,9 @@ const playStore=new HYEventStore({
             })
             audio.onPause(()=>{
                 ctx.isPlay=false
+            })
+            audio.onEnded(()=>{ //监听播放完了
+                this.dispatch('pnPlayAction','next')
             })
         },
 
@@ -136,7 +142,7 @@ const playStore=new HYEventStore({
                 }
             }else{
                 // 随机播放
-                let index=Math.floor(Math.random*ctx.playList.length)
+                let index=Math.floor(Math.random()*ctx.playList.length)
                 if(ctx.playIndex == index){
                     this.dispatch('prevPlayAction')
                     return

@@ -9,3 +9,5 @@
             <music-menus-item item="{{item}}" bindtap="handleClick" data-info="{{item}}" width="{{'345rpx'}}" height="{{'425rpx'}}"></music-menus-item> 
     </view>
 </view>
+
+<play-bottom></play-bottom>

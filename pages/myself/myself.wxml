@@ -1,2 +1,4 @@
 <!--pages/myself/myself.wxml-->
 <text>我的</text>
+
+<play-bottom></play-bottom>

@@ -2,6 +2,7 @@
   "enablePullDownRefresh": true,
   "backgroundTextStyle": "dark",
   "usingComponents": {
-    "video-item":"/components/video-item/index"
+    "video-item":"/components/video-item/index",
+    "play-bottom":"/components/play-bottom/index"
   }
 } 

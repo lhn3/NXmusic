@@ -1,0 +1,56 @@
+/* components/play-bottom/index.wxss */
+
+.play{
+    background-color: #fafafa;
+    position:fixed;
+    display: flex;
+    justify-content: space-between;
+    left: 0;
+    bottom: 0;
+    height: 44px;
+    width: 100%;
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.2);
+}
+.left{
+    display: flex;
+}
+.img{
+    position: relative;
+    top: -8px;
+    height: 44px;
+    width: 44px;
+    border-radius: 50%;
+    margin: 0 20rpx 10rpx 20rpx;
+}
+.info{
+    font-size: 14px;
+    line-height: 44px;
+}
+.text{
+    color: #8a8a8a;
+}
+.right{
+    display: flex;
+}
+.btn{
+    padding-top: 7px;
+    width: 30px;
+    height: 30px;
+}
+.btn-music{
+    margin: 0 10rpx 0 20rpx;
+}
+
+/* 动画 */
+@keyframes albumRotate{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+
+.album{
+    animation:albumRotate 20s linear infinite;
+}

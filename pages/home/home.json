@@ -4,6 +4,7 @@
     "header":"/components/header/index",
     "music-rank":"/components/music-rank/index",
     "music-menu":"/components/music-menu/index",
-    "music-peakedness":"/components/music-peakedness/index"
+    "music-peakedness":"/components/music-peakedness/index",
+    "play-bottom":"/components/play-bottom/index"
   }
 }

@@ -2,6 +2,7 @@
   "usingComponents": {
     "header":"/components/header/index",
     "musicList-item":"/components/musicList-item/index",
-    "musicList-hd":"/components/musicList-hd/index"
+    "musicList-hd":"/components/musicList-hd/index",
+    "play-bottom":"/components/play-bottom/index"
   }
 }
