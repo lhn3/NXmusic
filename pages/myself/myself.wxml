@@ -1,4 +1,6 @@
 <!--pages/myself/myself.wxml-->
 <text>我的</text>
 
+<!-- 占位，底部播放控制栏 -->
+<view class="h"></view>
 <play-bottom></play-bottom>

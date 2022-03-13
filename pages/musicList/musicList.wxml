@@ -15,4 +15,6 @@
     <musicList-item index="{{index+1}}" item="{{item}}" bindtap="handleClick" data-index="{{index}}"></musicList-item>
 </block>
 
+<!-- 占位，底部播放控制栏 -->
+<view class="h"></view>
 <play-bottom></play-bottom>

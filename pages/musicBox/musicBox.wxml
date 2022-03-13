@@ -10,4 +10,6 @@
     </view>
 </view>
 
+<!-- 占位，底部播放控制栏 -->
+<view class="h"></view>
 <play-bottom></play-bottom>

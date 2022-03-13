@@ -3,6 +3,7 @@ import {getMusicDetail,getMusicLyric} from '../service/musicAPI'
 import lyricUtils from '../utils/lyricUtils'
 
 const audio=wx.createInnerAudioContext()
+// const audio=wx.getBackgroundAudioManager()
 
 const playStore=new HYEventStore({
     state:{
@@ -44,6 +45,7 @@ const playStore=new HYEventStore({
             if(detail.code==200){
                 ctx.musicInfo=detail.songs[0] 
                 ctx.totalTime=detail.songs[0].dt
+                // audio.title=detail.songs[0].name
             } 
             if(lyric.code==200){
                 let lyricList = lyricUtils(lyric.lrc.lyric)
@@ -57,6 +59,7 @@ const playStore=new HYEventStore({
         playAction(ctx){
             audio.stop()            //先停止
             audio.src=`https://music.163.com/song/media/outer/url?id=${ctx.id}.mp3`
+            // audio.title='123'
             audio.onCanplay(()=>{//准备好了
                 audio.play()     //调用播放
             }) 
@@ -150,7 +153,7 @@ const playStore=new HYEventStore({
                     ctx.playIndex=index
                 }
             }
-            let id=ctx.playList[ctx.playIndex].id
+            let id=ctx.playList.length != 0?ctx.playList[ctx.playIndex].id:ctx.id
             this.dispatch('getMusicInfoAction',id)
         },
     }

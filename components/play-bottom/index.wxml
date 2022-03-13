@@ -1,6 +1,6 @@
 <!--components/play-bottom/index.wxml-->
-<view class="play">
-    <view class="left" bindtap="toMusicPlayer">
+<view class="play" bindtap="toMusicPlayer">
+    <view class="left">
         <image src="{{musicInfo.al.picUrl}}" mode="widthFix" class="img album" style="animation-play-state: {{isPlay?'running':'paused'}};"></image>
         <view class="info">
             {{musicInfo.name}}
@@ -9,7 +9,7 @@
         </view>
     </view>
     <view class="right">
-        <image class="btn btn-pause" src="/assets/images/music/{{isPlay?'pause':'play'}}_icon.png" bindtap="pauseOrresume"></image>
+        <image class="btn btn-pause" src="/assets/images/music/{{isPlay?'pause':'play'}}_icon.png" catchtap="pauseOrresume"></image>
         <image class="btn btn-music" src="/assets/images/music/playlist_icon.png"></image>
     </view>
 </view>

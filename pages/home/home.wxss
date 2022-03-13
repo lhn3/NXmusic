@@ -23,4 +23,7 @@ page{
 .swiperImg{
     width: 100%;
 }
+.h{
+    height: 44px;
+}
 
