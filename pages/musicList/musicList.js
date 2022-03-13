@@ -1,5 +1,5 @@
 // pages/musicList/musicList.js
-import {songStore} from '../../store/index'
+import {songStore,playStore} from '../../store/index'
 import {getMusicList} from '../../service/musicAPI'
 Page({
     data: {
@@ -46,5 +46,12 @@ Page({
     async musicList(id){
         let res = await getMusicList(id)
         this.setData({musicInfo:res.playlist})
+    },
+
+    //前往播放页携带播放列表
+    handleClick(e){
+        let playIndex = e.currentTarget.dataset.index
+        playStore.setState("playList",this.data.musicInfo.tracks)
+        playStore.setState("playIndex",playIndex)
     }
 })

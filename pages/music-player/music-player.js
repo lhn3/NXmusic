@@ -1,5 +1,5 @@
 // pages/music-player/music-player.js
-import {playStore} from '../../store/playStore'
+import {playStore} from '../../store/index'
 Page({
     data: {
         // 定值
@@ -7,6 +7,8 @@ Page({
         musicInfo:{},     //歌曲详情
         totalTime:0,      //歌曲总时长
         lyricList:[],      //歌词
+        playList:[],      //歌曲列表 
+        playIndex:0,      //歌曲索引
 
         // 动值
         currentTime:0,   //播放了多长时间
@@ -15,6 +17,7 @@ Page({
         isSlider:false,    //是否正在滑动
         isPlay:true,        //是否正在播放
         lyricIndex:0,      //歌词索引
+        playStyle:0,        //播放模式
 
         // 此页面数据
         currentHeight:'', //滑动页面高度
@@ -49,31 +52,26 @@ Page({
     
     // 监听数据变化赋值
     getMusicInfo(){ 
-        playStore.onStates(['musicInfo','totalTime','lyricList','currentTime', 'lyric',      'sliderValue', 'isSlider','isPlay','lyricIndex'],({
-            musicInfo,
-            totalTime,
-            lyricList,
-            currentTime, 
-            lyric,      
-            sliderValue, 
-            isSlider,
-            isPlay,   
-            lyricIndex,
+        playStore.onStates(['musicInfo','totalTime','lyricList','currentTime', 'lyric',      'sliderValue', 'isSlider','isPlay','lyricIndex','playStyle','playList','playIndex'],({
+            musicInfo,totalTime,lyricList,currentTime,lyric,sliderValue,isSlider,isPlay,lyricIndex,playStyle,playList,playIndex
         })=>{
-            if(musicInfo) this.setData({musicInfo});
-            if(totalTime) this.setData({totalTime});
-            if(lyricList) this.setData({lyricList});
-            if(currentTime) this.setData({currentTime});
-            if(lyric) this.setData({lyric});
-            if(sliderValue) this.setData({sliderValue});
-            if(isSlider) this.setData({isSlider});
-            if(lyricIndex) this.setData({lyricIndex});
+            if(musicInfo != undefined) this.setData({musicInfo});
+            if(totalTime != undefined) this.setData({totalTime});
+            if(lyricList != undefined) this.setData({lyricList});
+            if(currentTime != undefined) this.setData({currentTime});
+            if(lyric != undefined) this.setData({lyric});
+            if(sliderValue != undefined) this.setData({sliderValue});
+            if(isSlider != undefined) this.setData({isSlider});
+            if(lyricIndex != undefined) this.setData({lyricIndex});
             if(isPlay != undefined) this.setData({isPlay});
+            if(playStyle != undefined) this.setData({playStyle});
+            if(playList != undefined) this.setData({playList});
+            if(playIndex != undefined) this.setData({playIndex});
         })
     },
 
     //事件监听----------------------------------------------------------------------------------------
-    //返回
+    //返回按钮
     back(){
         wx.navigateBack()
     }, 
@@ -93,8 +91,25 @@ Page({
         playStore.dispatch('sliderChangingAction',e.detail.value)
     },
 
+    //监听播放模式点击
+    changePlayStyle(){
+        playStore.dispatch('changePlayStyleAction')
+    }, 
+
     // 暂停开始播放
     pauseOrresume(){
         playStore.dispatch('pauseOrresumeAction')
-    } 
+    },
+
+    // 监听上一首下一首点击
+    prevClick(){
+        playStore.dispatch('pnPlayAction','prev')
+        this.getMusicInfo()
+    },
+    nextClick(){
+        playStore.dispatch('pnPlayAction','next')
+        this.getMusicInfo()
+    }
+
+
 })

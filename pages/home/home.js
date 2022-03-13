@@ -2,10 +2,10 @@
 import {getBanner} from '../../service/musicAPI'
 import {queryRect} from "../../utils/querySelect"
 import {throttle} from "../../utils/throttle"
-import {songStore} from "../../store/index" 
+import {songStore,playStore} from "../../store/index" 
 
 
-const _queryRect=throttle(queryRect,1000)
+const _queryRect=throttle(queryRect,1000,true,true)
 Page({
     data: { 
         banners:[], 
@@ -120,5 +120,12 @@ Page({
         wx.navigateTo({
           url: '/pages/detail-search/detail-search',
         })
+    },
+
+    //点击获取播放列表和播放索引并保存到store
+     handleClick(e){
+        let playIndex = e.currentTarget.dataset.index
+        playStore.setState("playList",this.data.hotRanking)
+        playStore.setState("playIndex",playIndex)
     }
 })

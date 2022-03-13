@@ -31,8 +31,8 @@
             </view>
         </view>
         <!-- 歌词 -->
-        <!-- <view class="lyric" wx:if="{{isShowLyric}}">{{lyric}}</view> -->
-        <view class="lyric">{{lyric}}</view>
+        <view class="lyric" wx:if="{{isShowLyric}}">{{lyric}}</view>
+        <!-- <view class="lyric">{{lyric}}</view> -->
         <!-- 进度条 -->
         <view class="progress">
             <slider block-size="15" bindchange="sliderChange" bindchanging="sliderChanging" value="{{sliderValue}}"></slider>
@@ -43,10 +43,10 @@
         </view>
         <!-- 控制播放 -->
         <view class="operation">
-            <image class="btn btn-mode" src="/assets/images/player/play_order.png"></image>
-            <image class="btn btn-prev" src="/assets/images/player/play_prev.png"></image>
-            <image class="btn btn-pause" src="/assets/images/player/{{isPlay?'play_pause':'play_resume'}}.png" bindtap="pauseOrresume"></image>
-            <image class="btn btn-next" src="/assets/images/player/play_next.png"></image>
+            <image class="btn btn-mode" src="/assets/images/player/play_style_{{playStyle}}.png" bindtap="changePlayStyle"></image>
+            <image class="btn btn-prev" src="/assets/images/player/play_prev.png" bindtap="prevClick"></image>
+            <image class="btn btn-pause" src="/assets/images/player/play_{{isPlay?'pause':'resume'}}.png" bindtap="pauseOrresume"></image>
+            <image class="btn btn-next" src="/assets/images/player/play_next.png" bindtap="nextClick"></image>
             <image class="btn btn-music" src="/assets/images/player/play_music.png"></image>
         </view>
     </swiper-item>

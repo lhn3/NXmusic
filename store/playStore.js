@@ -11,6 +11,8 @@ const playStore=new HYEventStore({
         musicInfo:{},     //歌曲详情
         totalTime:0,      //歌曲总时长
         lyricList:[],      //歌词
+        playList:[],       //播放列表
+        playIndex:0,       //播放索引
 
         // 动值        
         currentTime:0,   //播放了多长时间
@@ -19,11 +21,21 @@ const playStore=new HYEventStore({
         isSlider:false,    //是否正在滑动
         isPlay:true,        //是否正在播放
         lyricIndex:0,      //歌词索引
+        playStyle:0        //0顺序播放，1单曲循环，2随机播放
     },
     actions:{
         // 请求音乐数据和歌词
         async getMusicInfoAction(ctx,id){
-            if(id==ctx.id) return;  //如果进入正在播放的页面，继续播放
+            if(id==ctx.id) {return};  //如果进入正在播放的页面，继续播放
+            // 清空上一首哥所有信息
+            ctx.musicInfo={}
+            ctx.totalTime=0
+            ctx.lyricList=[]
+            ctx.currentTime=0
+            ctx.lyric=''    
+            ctx.sliderValue=0
+            ctx.lyricIndex=0
+
             ctx.id=id
             let detail=await getMusicDetail(id)
             let lyric=await getMusicLyric(id)
@@ -38,6 +50,7 @@ const playStore=new HYEventStore({
             //开启播放
             this.dispatch('playAction')
         },
+
         // 播放
         playAction(ctx){
             audio.stop()            //先停止
@@ -60,6 +73,7 @@ const playStore=new HYEventStore({
                 ctx.isPlay=false
             })
         },
+
         //获取当前播放的歌词
         lyricToShowAction(ctx){
             let lyricList=ctx.lyricList
@@ -74,6 +88,7 @@ const playStore=new HYEventStore({
                 }
             }
         },
+
         //监听进度条点击和滑动后松开
         sliderChangeAction(ctx,value){
             let clickCurrentTime = ctx.totalTime*value/100   //计算点击后的播放时间
@@ -83,21 +98,55 @@ const playStore=new HYEventStore({
             ctx.currentTime=clickCurrentTime
             ctx.isSlider=false
         },
+
         //监听进度条拖拽过程中
         sliderChangingAction(ctx,value){
             let changeCurrentTime=ctx.totalTime*value/100//计算滑动时的播放时间
             ctx.isSlider=true
             ctx.currentTime=changeCurrentTime            //只需设置跟随变动的时间
         },
+
+        //播放模式改变
+        changePlayStyleAction(ctx){
+            if(ctx.playStyle==0){
+                ctx.playStyle=1
+            }else if(ctx.playStyle==1){
+                ctx.playStyle=2
+            }else{
+                ctx.playStyle=0
+            }
+        },
+
         // 暂停开始播放
         pauseOrresumeAction(ctx){
             // 监听播放
-            if(ctx.isPlay){
-                audio.pause()
+            ctx.isPlay?audio.pause():audio.play()
+        },
+
+        // 上一首下一首
+        pnPlayAction(ctx,pn){
+            // 先判断播放模式
+            if(ctx.playStyle != 2){
+                if (pn === 'prev'){
+                    // 上一首
+                    ctx.playIndex == 0 ? ctx.playIndex = ctx.playList.length - 1 : ctx.playIndex -= 1
+                }else if(pn === 'next'){
+                    // 下一首
+                    ctx.playIndex == ctx.playList.length - 1 ? ctx.playIndex = 0 : ctx.playIndex += 1
+                }
             }else{
-                audio.play()
+                // 随机播放
+                let index=Math.floor(Math.random*ctx.playList.length)
+                if(ctx.playIndex == index){
+                    this.dispatch('prevPlayAction')
+                    return
+                }else{
+                    ctx.playIndex=index
+                }
             }
-        }
+            let id=ctx.playList[ctx.playIndex].id
+            this.dispatch('getMusicInfoAction',id)
+        },
     }
 })
 

@@ -12,5 +12,5 @@
 
 <!-- 音乐列表 -->
 <block  wx:for="{{musicInfo.tracks}}" wx:key="id">
-    <musicList-item index="{{index+1}}" item="{{item}}"></musicList-item>
+    <musicList-item index="{{index+1}}" item="{{item}}" bindtap="handleClick" data-index="{{index}}"></musicList-item>
 </block>

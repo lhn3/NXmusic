@@ -77,6 +77,9 @@ page{
 }
 .lyric{
   color: #26ce8a;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 /* 进度 */

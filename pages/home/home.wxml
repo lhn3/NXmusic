@@ -19,7 +19,7 @@ style="height: {{swiperHeight}};">
     <header title='推荐歌曲' bind:moreClick="toMusicList" data-id="1"></header>  
     <view class="song-list">
         <block wx:for="{{hotRanking}}" wx:key="id">
-           <music-rank item="{{item}}"></music-rank>  
+           <music-rank item="{{item}}" bindtap="handleClick" data-index="{{index}}"></music-rank>  
         </block>
     </view>    
 </view>
