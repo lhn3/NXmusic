@@ -38,3 +38,21 @@ export function checkSessionKey(){
     })
   })
 }
+
+//获取用户信息
+export function getUserInfo(){
+  return new Promise((resolve,reject)=>{
+    wx.getUserProfile({
+      desc: '确定登录',
+      success:(res)=>{
+          //记录用户名头像
+          wx.setStorageSync('username', res.userInfo.nickName)
+          wx.setStorageSync('avatar', res.userInfo.avatarUrl)
+          resolve({username:res.userInfo.nickName,avatar:res.userInfo.avatarUrl})
+      },
+      fail:(err)=>{
+          reject(err.errMsg)
+      }
+    })
+  })
+}

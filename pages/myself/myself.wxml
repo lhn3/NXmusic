@@ -1,5 +1,21 @@
 <!--pages/myself/myself.wxml-->
-<text>我的</text>
+
+<view class="top" wx:if="{{!username}}">
+    <image class="back" src="/assets/images/avatar.jpg" mode="aspectFill"></image>
+    <view class="cover"></view>
+    <view class="info">
+        <image class="avatar" src="/assets/images/avatar.jpg"></image>
+        <view class="username" bindtap="login">登录/注册</view>
+    </view>
+</view>
+<view class="top" wx:else="{{username}}">
+    <image class="back" src="{{avatar}}" mode="aspectFill"></image>
+    <view class="cover"></view>
+    <view class="info">
+        <image class="avatar" src="{{avatar}}"></image>
+        <view class="username">{{username}}</view>
+    </view>
+</view>
 
 <!-- 占位，底部播放控制栏 -->
 <view class="h"></view>
